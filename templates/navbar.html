@@ -1,0 +1,208 @@
+{% comment %} {% load static %}
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+.navMenu {
+  
+  background-color:#94A684;
+  height: 4rem;
+  padding:20px 20px 0px 90px;
+
+
+}
+
+
+.navMenu a {
+  color: #E4E4D0;
+  text-decoration: none;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  width: 80px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu a:hover {
+  color: #fddb3a;
+}
+
+.navMenu .dot {
+  width: 6px;
+  height: 6px;
+  background: #fddb3a;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transform: translateX(30px);
+  transform: translateX(30px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu a:nth-child(1):hover ~ .dot {
+  -webkit-transform: translateX(30px);
+  transform: translateX(30px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.navMenu a:nth-child(2):hover ~ .dot {
+  -webkit-transform: translateX(110px);
+  transform: translateX(110px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.navMenu a:nth-child(3):hover ~ .dot {
+  -webkit-transform: translateX(200px);
+  transform: translateX(200px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.navMenu a:nth-child(4):hover ~ .dot {
+  -webkit-transform: translateX(285px);
+  transform: translateX(285px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+/* Add spacing between navigation items */
+.navItem {
+  margin-right: 20px; /* Adjust the margin value as needed */
+}
+
+/* Add styles for the dot or any other elements */
+.dot {
+  /* Your dot styling here */
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+  </style>
+  <div>
+    <nav class="navMenu clearfix">
+        <a href="#" class="navItem">Home</a>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="navItem">Logout</a>
+            <a href="{% url 'myapp:add_inventory' %}" class="navItem">Add_Inventory</a>
+        {% else %}
+            <a href="#" class="navItem">Login</a>
+        {% endif %}
+        <a href="#" class="navItem">AboutUs</a> <!-- Add AboutUs link here -->
+        <div class="dot"></div>
+    </nav>
+</div>
+ {% endcomment %}
+ {% load static %}
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+.navMenu {
+  background-color: #94A684;
+  height: 4rem;
+  padding: 20px 20px 0px 90px;
+}
+
+.navMenu a {
+  color: #E4E4D0;
+  text-decoration: none;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 100px; /* Adjust the minimum width as needed */
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  position: relative; /* Add position:relative */
+}
+
+.navMenu a:hover {
+  color: #fddb3a;
+}
+
+.navMenu .dot {
+  width: 6px;
+  height: 6px;
+  background: #fddb3a;
+  border-radius: 50%;
+  opacity: 0;
+  position: absolute; /* Change to absolute positioning */
+  top: 50%; /* Position the dot in the middle vertically */
+  transform: translateY(-50%); /* Center the dot vertically */
+  right: -15px; /* Adjust the right offset as needed */
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu a:nth-child(1):hover ~ .dot {
+  transform: translateY(-50%); /* Center the dot vertically */
+  right: -15px; /* Adjust the right offset as needed */
+  opacity: 1;
+}
+
+.navMenu a:nth-child(2):hover ~ .dot {
+  transform: translateY(-50%); /* Center the dot vertically */
+  right: -15px; /* Adjust the right offset as needed */
+  opacity: 1;
+}
+
+.navMenu a:nth-child(3):hover ~ .dot {
+  transform: translateY(-50%); /* Center the dot vertically */
+  right: -15px; /* Adjust the right offset as needed */
+  opacity: 1;
+}
+
+.navMenu a:nth-child(4):hover ~ .dot {
+  transform: translateY(-50%); /* Center the dot vertically */
+  right: -15px; /* Adjust the right offset as needed */
+  opacity: 1;
+}
+
+/* Add spacing between navigation items */
+.navItem {
+  margin-right: 20px; /* Adjust the margin value as needed */
+}
+
+/* Add styles for the dot or any other elements */
+.dot {
+  /* Your dot styling here */
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+
+<div>
+  <nav class="navMenu clearfix">
+    <a href="{% url 'myapp:Inventory_list' %}" class="navItem">Home</a>
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="navItem">Logout</a>
+      <a href="{% url 'myapp:add_inventory' %}" class="navItem">Add Inventory</a> <!-- Removed underscores in the link text -->
+    {% else %}
+      <a href="#" class="navItem">Login</a>
+    {% endif %}
+    <a href="#" class="navItem">About Us</a> <!-- Added space in the link text -->
+    <div class="dot"></div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert-alert-{{ message.tags }} mt-4">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif%}
+    {% block content %}
+    {% endblock %}
+  </nav>
+</div>
+

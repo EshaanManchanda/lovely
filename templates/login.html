@@ -1,0 +1,44 @@
+{% extends "layout.html"%}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    {{ form.media }}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="POST" class="mt-5">
+                <fieldset>
+                    <legend class="border-bottom pb-2 mb-4 text-center">Login Form</legend>
+                    {% csrf_token %}
+
+                    {% crispy form 'bootstrap4' %}
+                    
+                    <div class="form-group text-center">
+                        <button class="btn btn-outline-success" type="submit">Login</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom CSS to reduce the width of username and password fields */
+    #id_username, #id_password {
+        width: 700px; /* Adjust the width as needed */
+        
+    }
+    .container {
+        height: 50vh;
+        display: centre;
+        justify-content: center;
+        align-items: center;
+        border-radius:10px;
+        padding: 1.5rem 1.5rem;
+    }
+</style>
+
+{% endblock %}
+
+
