@@ -16,10 +16,9 @@ import json
 def Inventory_list(request):
     Inventories = Inventory.objects.all()
     context = {
-        "title": "Inventory_list",
         "Inventories": Inventories
     }
-    return render(request, "Inventory_list.html", context=context)
+    return render(request, "dashboard.html", context=context)
 
 class per_product_view(DetailView):
     model = Inventory
@@ -77,7 +76,7 @@ def update_inventory(request,pk):
             item=UpdateForm.save(commit=False)
             item.save()
             
-            return redirect("myapp:per_product",pk=pk)
+            return redirect("myapp:tables")
         print(" update ")
     else :
         UpdateForm = UpdateInventoryForm(instance=inventory)
@@ -102,4 +101,21 @@ def update_inventory(request,pk):
 
 
 #     return render(request,"inventories/dashboard.html",context=context)
+
+@login_required
+def chart(request):
+    Inventories = Inventory.objects.all()
+    context = {
+        "Inventories": Inventories
+    }
+    return render(request, "chart.html", context=context)
+
+@login_required
+def tables(request):
+    Inventories = Inventory.objects.all()
+    context = {
+        "Inventories": Inventories
+    }
+    return render(request, "table.html", context=context)
+    
     

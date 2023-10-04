@@ -1,13 +1,15 @@
 
 from django import views
 from django.urls import path
-from .views import Inventory_list, delete_inventory, per_product_view,add_product, update_inventory
+from .views import Inventory_list, delete_inventory, per_product_view,add_product, update_inventory,chart,tables
 
 
 app_name = 'myapp'
 
 urlpatterns = [
     path("", Inventory_list, name="Inventory_list"),
+    path("charts/", chart, name="charts"),
+    path("tables/", tables, name="tables"),
     # path("product/<pk>", per_product_view, name="per_product"),
     path("product/<pk>", per_product_view.as_view(), name="per_product"), 
     path("add_inventory/",add_product, name="add_inventory"),

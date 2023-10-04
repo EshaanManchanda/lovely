@@ -1,13 +1,27 @@
-{% comment %} {% extends "layout.html" %}
-{% block contend %}
-<div class="content-section">
-    <div class="rowmx-auto justify-content-centre">
-        <div class="card m-4" style="width:90%;">
-            <div class="catrd-body">
-                <div id="chart1">
-                </div>
-            </div>
-        </div>
+{% extends "./components/layout.html" %} 
+{% block content %}
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">Dashboard</h1>
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+    {% comment %} quick menu {% endcomment %}
+    {% include "./components/quickMenu.html" %}
+    <div class="row">
+      <div class="col-xl-6">
+        {% comment %} Area graph {% endcomment %}
+        {% include "./components/areaChart.html" %}
+      </div>
+      {% comment %} Bar Chart {% endcomment %}
+      <div class="col-xl-6">
+      {% include "./components/barChart.html" %}
+      </div>
     </div>
-</div>
-{% endblock %} {% endcomment %}
+    <div class="card mb-4">
+      {% comment %} table  {% endcomment %}
+      {% include "./components/table.html" %}
+    </div>
+  </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,51 @@
+<div class="card-header">
+  <i class="fas fa-table me-1"></i>
+  DataTable Example
+</div>
+<div class="card-body">
+  <table id="datatablesSimple">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Cost Per Item</th>
+        <th>Quantity In Stock</th>
+        <th>Quantity Sold</th>
+        <th>Sales</th>
+        <th>Stock Date</th>
+        <th>Last Sales Date</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Cost Per Item</th>
+        <th>Quantity In Stock</th>
+        <th>Quantity Sold</th>
+        <th>Sales</th>
+        <th>Stock Date</th>
+        <th>Last Sales Date</th>
+      </tr>
+    </tfoot>
+    <tbody>
+      {% for item in Inventories%}
+      <tr
+      style="cursor: pointer; cursor: hand"
+      onclick="window.location=`{% url 'myapp:update_inventory' item.id %}`"
+      >
+      
+          <td>{{forloop.counter}}</td>
+          <td><a href="{% url 'myapp:update_inventory' item.id %}">{{item.name}} </a></td>
+          <td>{{item.cost_per_item}}</td>
+          <td>{{item.quantity_in_stock}}</td>
+          <td>{{item.quantity_sold}}</td>
+          <td>{{item.sales}}</td>
+          <td>{{item.stock_date}}</td>
+          <td>{{item.last_sales_date}}</td>
+       
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

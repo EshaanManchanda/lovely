@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>
+        {% block title %}
+        Dashboard
+        {% endblock %}
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/custome.css' %}" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        {% block extra_head%}
+        
+        {% endblock %}
+    </head>
+    <body class="sb-nav-fixed">
+        {% include "./navbar.html" %}
+        <div id="layoutSidenav">
+            {% include "./sideNavbar.html" %}
+            <div id="layoutSidenav_content">
+                {% block content %}
+                
+                {% endblock content %}
+                {% include "./footer.html" %}
+            </div>
+        </div>
+        {% include "./scripts.html" %}
+        {% block extra_script %}
+        
+        {% endblock  %}
+    </body>
+</html>
